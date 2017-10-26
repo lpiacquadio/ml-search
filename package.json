@@ -3,15 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "mobx": "^3.3.1",
+    "mobx-react": "^4.3.3",
+    "normalize.css": "^7.0.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "react-flexbox-grid": "^1.1.5",
     "react-router": "^4.2.0",
     "react-scripts": "1.0.14"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "npm run build-css && run-p -ncr watch-css start-js",
+    "start-js": "react-scripts start",
+    "build": "run-s -n build-css build-js",
+    "build-js": "react-scripts build",
+    "build-css": "node-less-chokidar src",
+    "watch-css": "node-less-chokidar src --watch --recursive"
+  },
+  "devDependencies": {
+    "node-less-chokidar": "^0.1.2",
+    "npm-run-all": "^4.1.1"
   }
 }

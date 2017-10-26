@@ -3,22 +3,26 @@ import ReactDOM from 'react-dom';
 import { Router } from 'react-router';
 import { Route } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
-import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
-import App from './App';
-import App2 from './App2';
-import App3 from './App3';
+import './styles.css';
+import 'normalize.css';
+import 'react-flexbox-grid/dist/react-flexbox-grid.css'
+
+import SearchBar from './SearchBar';
+import Home from './Home';
+import ItemList from './ItemList';
+import ItemDetail from './ItemDetail';
 
 const history = createBrowserHistory()
 
 ReactDOM.render((
     <Router history={history}>
-        <div>
-            Barra de busqueda
-            <Route exact path="/" component={App}/>
-            <Route exact path="/items" component={App2}/>
-            <Route exact path="/items/:id" component={App3}/>
+        <div className="App">
+            <SearchBar />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/items" component={ItemList} />
+            <Route exact path="/items/:id" component={ItemDetail} />
         </div>
     </Router>
 ), document.getElementById('root'));
