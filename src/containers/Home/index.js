@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// import './styles.css';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
 class Home extends Component {

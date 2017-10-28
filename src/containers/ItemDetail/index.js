@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// import './styles.css';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import Item from '../Item';
 
-class ItemList extends Component {
+class ItemDetail extends Component {
   render() {
-    let items = [{}, {}, {}, {}, {}]
     return (
       <Grid fluid>
         <Row>
@@ -14,12 +11,9 @@ class ItemList extends Component {
             Hello, world!
           </Col>
         </Row>
-        {items.map((item) => {
-          return <Item />
-        })}
       </Grid>
     );
   }
 }
 
-export default ItemList;
+export default ItemDetail;
