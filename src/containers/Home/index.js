@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
 class Home extends Component {
@@ -7,9 +7,7 @@ class Home extends Component {
     return (
       <Grid fluid>
         <Row>
-          <Col xs={6} md={3}>
-            Hello, world!
-          </Col>
+          <Col xs={12}></Col>
         </Row>
       </Grid>
     );

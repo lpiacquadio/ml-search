@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -15,6 +15,12 @@ const Container = styled.div`
     height: 30px;
     display: flex;
     box-sizing: border-box;
+
+    & > a {
+      @media (max-width: 350px) {
+        display: none;
+      }
+    }
 `;
 
 const Logo = styled.div`
@@ -43,6 +49,10 @@ const Input = styled.input`
     font-size: 0.8em;
     outline: none;
     box-sizing: border-box;
+
+    @media (max-width: 350px) {
+      margin-left: 0px;
+    }
 `;
 
 const Button = styled.button`
@@ -65,6 +75,25 @@ const Icon = styled.div`
 `;
 
 class SearchBar extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      value: ''
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event) {
+    this.props.history.push('/items?search=' + this.state.value);
+    event.preventDefault();
+  }
+
   render() {
     return (
       <Wrapper>
@@ -72,8 +101,8 @@ class SearchBar extends Component {
           <Link to="/">
             <Logo publicUrl={process.env.PUBLIC_URL}></Logo>
           </Link>
-          <Form>
-            <Input type="text" placeholder="Nunca dejes de buscar" />
+          <Form onSubmit={this.handleSubmit}>
+            <Input type="text" placeholder="Nunca dejes de buscar" value={this.state.value} onChange={this.handleChange} />
             <Button type="submit">
               <Icon publicUrl={process.env.PUBLIC_URL}></Icon>
             </Button>
@@ -84,4 +113,4 @@ class SearchBar extends Component {
   }
 }
 
-export default SearchBar;
+export default withRouter(SearchBar);
